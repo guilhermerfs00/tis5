@@ -20,23 +20,18 @@ import reactor.core.publisher.Mono;
 @RestController
 @Slf4j
 public class UserController implements IUserController {
-    private static final String USER_NOT_FOUND_MESSAGE = "teste";
     private final UserService service;
-    private final UserRepository userRepository;
-    private static final UserMapper mapper = UserMapper.INSTANCE;
-
 
     @Override
     public Mono<ResponseEntity> authenticate(Mono<AuthenticationRequest> authRequest) {
-        return service.login(authRequest);
+        return Mono.just(service.login(authRequest))
+                .map(jwt -> new ResponseEntity<>(jwt, HttpStatus.OK));
     }
 
     @Override
     public Mono<UserBO> findByUsername(String username) {
-        return Mono.just(username)
-                .flatMap(userRepository::findByUsername)
-                .switchIfEmpty(Mono.error(new RuntimeException(USER_NOT_FOUND_MESSAGE)))
-                .map(mapper::entityToBo)
-                .doOnSuccess(current -> log.info("Consulta, usuario <{}> encontrado", username));
+        return service.findByUsername(username);
     }
+
+
 }

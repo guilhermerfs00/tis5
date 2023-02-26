@@ -46,7 +46,7 @@ public class DataInitializer {
                                     User user = User.builder()
                                             .roles(roles)
                                             .username(username)
-                                            .password(passwordEncoder.encode("123"))
+                                            .password(passwordEncoder.encode("analinda"))
                                             .email(username + "@gmail.com")
                                             .build();
 

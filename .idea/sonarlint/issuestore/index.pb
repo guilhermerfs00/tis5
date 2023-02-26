@@ -25,3 +25,11 @@ f
 6src/main/java/com/puc/ticketin/config/MongoConfig.java,f\1\f1d67d8c848698172bc005b89c85e4f59e55bccb
 d
 4src/main/java/com/puc/ticketin/config/AppConfig.java,4\f\4f012b2746b09bb75bf6f11071a6c7ea22e65404
+f
+6src/main/java/com/puc/ticketin/domain/entity/User.java,2\2\22921d50d7c885bce30b5b6676181e35581e829a
+l
+<src/main/java/com/puc/ticketin/domain/mapper/UserMapper.java,f\6\f6be11f8e8c82add2bff479e33d3222fb77063a3
+h
+8src/main/java/com/puc/ticketin/domain/entity/Ticket.java,3\9\39d2428a52915b8bdb0831e2a3ac1ff9e18f393f
+o
+?src/main/java/com/puc/ticketin/repository/TicketRepository.java,8\0\8070d9e94b369c9ba7d5d2a6af311792c8da5944
