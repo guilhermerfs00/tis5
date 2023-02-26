@@ -26,22 +26,11 @@ public class UserController implements IUserController {
     private final UserService service;
     private final UserRepository userRepository;
     private static final UserMapper mapper = UserMapper.INSTANCE;
-    private final JwtTokenProvider tokenProvider;
-    private final ReactiveAuthenticationManager authenticationManager;
+
 
     @Override
     public Mono<ResponseEntity> create(Mono<AuthenticationRequest> authRequest) {
-        return authRequest
-                .flatMap(login -> authenticationManager
-                        .authenticate(new UsernamePasswordAuthenticationToken(
-                                login.getUsername(), login.getPassword()))
-                        .map(this.tokenProvider::createToken))
-                .map(jwt -> {
-                    HttpHeaders httpHeaders = new HttpHeaders();
-                    httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + jwt);
-                    Map tokenBody = Map.of("access_token", jwt);
-                    return new ResponseEntity<>(tokenBody, httpHeaders, HttpStatus.OK);
-                });
+        return service.login(authRequest);
     }
 
     @Override
