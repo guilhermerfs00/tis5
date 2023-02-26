@@ -11,8 +11,6 @@ import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 
-import java.util.Map;
-
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Tag(name = "Tiketin")
@@ -27,7 +25,7 @@ public interface IUserController {
             }
     )
     @PostMapping("/login")
-    Mono<ResponseEntity> create(@Valid @RequestBody Mono<AuthenticationRequest> authRequest);
+    Mono<ResponseEntity> authenticate(@Valid @RequestBody Mono<AuthenticationRequest> authRequest);
 
 
     @Operation(

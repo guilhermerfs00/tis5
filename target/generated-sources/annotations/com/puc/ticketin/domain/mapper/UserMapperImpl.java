@@ -1,59 +1,59 @@
 package com.puc.ticketin.domain.mapper;
 
 import com.puc.ticketin.domain.bo.UserBO;
-import com.puc.ticketin.domain.entity.UserEntity;
+import com.puc.ticketin.domain.entity.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-02-23T22:06:03-0300",
+    date = "2023-02-26T16:52:25-0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
 
     @Override
-    public UserBO entityToBo(UserEntity entity) {
+    public UserBO entityToBo(User entity) {
         if ( entity == null ) {
             return null;
         }
 
-        UserBO userBO = new UserBO();
+        UserBO.UserBOBuilder userBO = UserBO.builder();
 
-        userBO.setId( entity.getId() );
-        userBO.setUsername( entity.getUsername() );
-        userBO.setPassword( entity.getPassword() );
-        userBO.setEmail( entity.getEmail() );
-        userBO.setActive( entity.isActive() );
+        userBO.id( entity.getId() );
+        userBO.username( entity.getUsername() );
+        userBO.password( entity.getPassword() );
+        userBO.email( entity.getEmail() );
+        userBO.active( entity.isActive() );
         List<String> list = entity.getRoles();
         if ( list != null ) {
-            userBO.setRoles( new ArrayList<String>( list ) );
+            userBO.roles( new ArrayList<String>( list ) );
         }
 
-        return userBO;
+        return userBO.build();
     }
 
     @Override
-    public UserEntity boToEntity(UserBO bo) {
+    public User boToEntity(UserBO bo) {
         if ( bo == null ) {
             return null;
         }
 
-        UserEntity userEntity = new UserEntity();
+        User user = new User();
 
-        userEntity.setId( bo.getId() );
-        userEntity.setUsername( bo.getUsername() );
-        userEntity.setPassword( bo.getPassword() );
-        userEntity.setEmail( bo.getEmail() );
+        user.setId( bo.getId() );
+        user.setUsername( bo.getUsername() );
+        user.setPassword( bo.getPassword() );
+        user.setEmail( bo.getEmail() );
         if ( bo.getActive() != null ) {
-            userEntity.setActive( bo.getActive() );
+            user.setActive( bo.getActive() );
         }
         List<String> list = bo.getRoles();
         if ( list != null ) {
-            userEntity.setRoles( new ArrayList<String>( list ) );
+            user.setRoles( new ArrayList<String>( list ) );
         }
 
-        return userEntity;
+        return user;
     }
 }

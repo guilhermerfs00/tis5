@@ -39,7 +39,7 @@ public class AuthController {
                 .map(jwt -> {
                     HttpHeaders httpHeaders = new HttpHeaders();
                     httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + jwt);
-                    Map tokenBody = Map.of("access_token", jwt);
+                    Map<String, String> tokenBody = Map.of("access_token", jwt);
                     return new ResponseEntity<>(tokenBody, httpHeaders, HttpStatus.OK);
                 });
 

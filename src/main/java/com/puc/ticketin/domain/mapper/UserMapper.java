@@ -2,7 +2,7 @@ package com.puc.ticketin.domain.mapper;//package com.example.demo.domain.mapper;
 
 
 import com.puc.ticketin.domain.bo.UserBO;
-import com.puc.ticketin.domain.entity.UserEntity;
+import com.puc.ticketin.domain.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -11,7 +11,7 @@ public interface UserMapper {
 
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    UserBO entityToBo(UserEntity entity);
+    UserBO entityToBo(User entity);
 
-    UserEntity boToEntity(UserBO bo);
+    User boToEntity(UserBO bo);
 }

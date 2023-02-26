@@ -16,8 +16,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-import java.util.Map;
-
 @RequiredArgsConstructor
 @RestController
 @Slf4j
@@ -29,7 +27,7 @@ public class UserController implements IUserController {
 
 
     @Override
-    public Mono<ResponseEntity> create(Mono<AuthenticationRequest> authRequest) {
+    public Mono<ResponseEntity> authenticate(Mono<AuthenticationRequest> authRequest) {
         return service.login(authRequest);
     }
 
