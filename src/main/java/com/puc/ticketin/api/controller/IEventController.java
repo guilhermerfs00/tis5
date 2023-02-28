@@ -29,29 +29,7 @@ import static org.springframework.http.HttpStatus.OK;
 @Validated
 public interface IEventController {
 
-//    @Operation(summary = "Obtenção de um Evento.", description = "Obtém um evento paginado por filro.", responses = {
-//            @ApiResponse(responseCode = "200",
-//                    description = "Operação realizada com sucesso.",
-//                    content = @Content(schema = @Schema(implementation = EventResponse.class))),
-//            @ApiResponse(responseCode = "400",
-//                    description = "Requisição possui algum valor faltante ou inválido."),
-//            @ApiResponse(responseCode = "422",
-//                    description = "Foi encontrada alguma condição inválida.",
-//                    content = @Content(schema = @Schema(implementation = HttpError.class))),
-//            @ApiResponse(responseCode = "502",
-//                    description = "Ocorreu um erro inesperado ao contactar com algum recurso externo.",
-//                    content = @Content(schema = @Schema(implementation = HttpError.class)))})
-//    @ResponseStatus(HttpStatus.OK)
-//    @GetMapping
-//    Mono<EventResponse> getEvent(
-//            @Schema(description = "Event Request", example = "MRV", required = true)
-//            @RequestParam @NotNull EventRequest eventRequest,
-//            @Schema(description = "CPF or CNPJ do Cedente", example = "38990808000136", required = true)
-//            @RequestHeader(value = "x-assignor-cpfcnpj") @NotNull String assignorCpfCnpj
-//    );
-
-
-    @Operation(summary = "Consulta por filtro", description = "Consulta eventos paginados de acordo com o filtro informado",
+    @Operation(summary = "Consulta evento", description = "Consulta eventos paginados de acordo com o filtro informado",
             responses = {@ApiResponse(responseCode = "200",
                     description = "Eventos encontrados com sucesso.",
                     content = @Content(schema = @Schema(implementation = EventResponse.class, oneOf = {PageRequest.class}))),

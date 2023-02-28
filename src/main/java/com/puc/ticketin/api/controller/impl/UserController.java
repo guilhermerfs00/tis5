@@ -1,5 +1,6 @@
-package com.puc.ticketin.api.controller;
+package com.puc.ticketin.api.controller.impl;
 
+import com.puc.ticketin.api.controller.IUserController;
 import com.puc.ticketin.api.request.AuthenticationRequest;
 import com.puc.ticketin.service.UserService;
 import lombok.RequiredArgsConstructor;

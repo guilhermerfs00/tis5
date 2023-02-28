@@ -1,5 +1,6 @@
-package com.puc.ticketin.api.controller;
+package com.puc.ticketin.api.controller.impl;
 
+import com.puc.ticketin.api.controller.IEventController;
 import com.puc.ticketin.api.request.EventFilterRequest;
 import com.puc.ticketin.api.response.EventResponse;
 import com.puc.ticketin.api.response.PageResponse;
@@ -23,7 +24,7 @@ public class EventController implements IEventController {
     public Mono<PageResponse<EventResponse>> listPaginated(Pageable page, EventFilterRequest filterRequest) {
         return service.listAllPagineted(page, filterRequest)
                 .map(eventMapper::mapBoToResponsePage)
-                .doOnSuccess(eventResponsePageResponse -> log.debug("aaa"));
+                .doOnError(Mono::error);
 
     }
 
