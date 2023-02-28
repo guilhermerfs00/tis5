@@ -1,7 +1,7 @@
 package com.puc.ticketin.config;
 
 
-import com.puc.ticketin.repository.UserRepository;
+import com.puc.ticketin.repository.ReactiveUserRepository;
 import com.puc.ticketin.security.JwtTokenAuthenticationFilter;
 import com.puc.ticketin.security.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
@@ -58,7 +58,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public ReactiveUserDetailsService userDetailsService(UserRepository users) {
+    public ReactiveUserDetailsService userDetailsService(ReactiveUserRepository users) {
 
         return username -> users.findByUsername(username)
                 .map(u -> User

@@ -2,8 +2,8 @@ package com.puc.ticketin;
 
 import com.puc.ticketin.domain.entity.Ticket;
 import com.puc.ticketin.domain.entity.User;
-import com.puc.ticketin.repository.TicketRepository;
-import com.puc.ticketin.repository.UserRepository;
+import com.puc.ticketin.repository.ReactiveTicketRepository;
+import com.puc.ticketin.repository.ReactiveUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -24,9 +24,9 @@ import static com.puc.ticketin.domain.enums.RoleEnum.ROLE_USER;
 @RequiredArgsConstructor
 public class DataInitializer {
 
-    private final TicketRepository ticketRepository;
+    private final ReactiveTicketRepository ticketRepository;
 
-    private final UserRepository userRepository;
+    private final ReactiveUserRepository reactiveUserRepository;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -35,7 +35,7 @@ public class DataInitializer {
         log.info("start data initialization...");
 
 
-        var initPosts = this.userRepository.deleteAll()
+        var initPosts = this.reactiveUserRepository.deleteAll()
                 .thenMany(
                         Flux.just("user", "admin")
                                 .flatMap(username -> {
@@ -50,7 +50,7 @@ public class DataInitializer {
                                             .email(username + "@gmail.com")
                                             .build();
 
-                                    return this.userRepository.save(user);
+                                    return this.reactiveUserRepository.save(user);
                                 })
                 );
 
