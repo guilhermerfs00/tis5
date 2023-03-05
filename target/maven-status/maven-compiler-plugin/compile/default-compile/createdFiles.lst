@@ -3,7 +3,6 @@ com\puc\ticketin\domain\bo\HttpError$TypeNotitification.class
 com\puc\ticketin\service\UserService.class
 com\puc\ticketin\repository\service\PageService.class
 com\puc\ticketin\domain\bo\HttpError$HttpErrorBuilder.class
-com\puc\ticketin\api\controller\UserController.class
 com\puc\ticketin\domain\mapper\UserMapper.class
 com\puc\ticketin\domain\bo\HttpError$Notification$NotificationBuilder.class
 com\puc\ticketin\domain\enums\RoleEnum.class
@@ -17,10 +16,11 @@ com\puc\ticketin\domain\entity\Event$EventBuilder.class
 com\puc\ticketin\api\response\PageResponse$PageResponseBuilder.class
 com\puc\ticketin\config\AppConfig.class
 com\puc\ticketin\api\response\EventResponse$EventResponseBuilder.class
-com\puc\ticketin\api\controller\EventController.class
 com\puc\ticketin\DataInitializer.class
+com\puc\ticketin\api\controller\impl\UserController.class
 com\puc\ticketin\domain\entity\Event.class
 com\puc\ticketin\domain\bo\UserBO$UserBOBuilder.class
+com\puc\ticketin\api\controller\impl\EventController.class
 com\puc\ticketin\api\controller\IEventController.class
 com\puc\ticketin\config\SecurityConfig.class
 com\puc\ticketin\api\response\EventResponse.class
@@ -34,6 +34,7 @@ com\puc\ticketin\api\request\EventRequest$EventRequestBuilder.class
 com\puc\ticketin\config\OpenApiConfig.class
 com\puc\ticketin\repository\ReactiveUserRepository.class
 com\puc\ticketin\domain\bo\EventBO.class
+com\puc\ticketin\config\PageableWebFluxConfiguration.class
 com\puc\ticketin\domain\entity\User$UserBuilder.class
 com\puc\ticketin\api\request\AuthenticationRequest$AuthenticationRequestBuilder.class
 com\puc\ticketin\domain\bo\UserBO.class

@@ -1,11 +1,0 @@
-
-e
-java:S1128"HRemove this unused import 'com.fasterxml.jackson.annotation.JsonIgnore'.(þ‘‹„8ªã¹€é0
-a
-java:S1128"?Remove this unused import 'javax.validation.constraints.Email'.(¸àô¹üÿÿÿÿ8÷àº€é0
-R
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ8é¼º€é0
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ûàº€é0
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8üàº€é0

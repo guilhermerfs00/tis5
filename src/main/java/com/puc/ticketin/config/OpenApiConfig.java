@@ -13,6 +13,6 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API REST with Spring Boot and Java 18")
-                        .description("Tiketin"));
+                        .description("Ticketin"));
     }
 }

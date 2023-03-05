@@ -1,18 +1,14 @@
-package com.puc.ticketin.domain.entity;//package com.example.demo.domain.entity;
+package com.puc.ticketin.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Email;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Builder
@@ -26,6 +22,7 @@ public class Event {
 
     private String name;
 
+    @CreatedDate
     private LocalDateTime createdDate;
 
 }

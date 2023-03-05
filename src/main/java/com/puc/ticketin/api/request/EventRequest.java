@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Value
 @Builder
-@Schema(description = "Representa a solicitação para Simulação da Proposta")
+@Schema(description = "Evento")
 public class EventRequest {
 
     @NotNull

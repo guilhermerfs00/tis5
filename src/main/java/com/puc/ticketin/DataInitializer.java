@@ -1,7 +1,10 @@
 package com.puc.ticketin;
 
+import com.puc.ticketin.domain.entity.Event;
 import com.puc.ticketin.domain.entity.Ticket;
 import com.puc.ticketin.domain.entity.User;
+import com.puc.ticketin.repository.EventRepository;
+import com.puc.ticketin.repository.ReactiveEventRepository;
 import com.puc.ticketin.repository.ReactiveTicketRepository;
 import com.puc.ticketin.repository.ReactiveUserRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,15 +28,13 @@ import static com.puc.ticketin.domain.enums.RoleEnum.ROLE_USER;
 public class DataInitializer {
 
     private final ReactiveTicketRepository ticketRepository;
-
+    private final ReactiveEventRepository eventRepository;
     private final ReactiveUserRepository reactiveUserRepository;
-
     private final PasswordEncoder passwordEncoder;
 
     @EventListener(value = ApplicationReadyEvent.class)
     public void init() {
         log.info("start data initialization...");
-
 
         var initPosts = this.reactiveUserRepository.deleteAll()
                 .thenMany(

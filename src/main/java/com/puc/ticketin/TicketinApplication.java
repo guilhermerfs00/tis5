@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(
-		title = "Spring webflux crud example",
-		version = "1.0",
-		description = "sample documents"
+		title = "Tiketin", description = "Documents"
 ))
 public class TicketinApplication {
 

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-02-28T11:34:14-0300",
+    date = "2023-03-02T21:08:39-0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
@@ -23,13 +23,13 @@ public class EventMapperImpl implements EventMapper {
             return null;
         }
 
-        EventBO.EventBOBuilder eventBO = EventBO.builder();
+        EventBO eventBO = new EventBO();
 
-        eventBO.id( entity.getId() );
-        eventBO.name( entity.getName() );
-        eventBO.createdDate( entity.getCreatedDate() );
+        eventBO.setId( entity.getId() );
+        eventBO.setName( entity.getName() );
+        eventBO.setCreatedDate( entity.getCreatedDate() );
 
-        return eventBO.build();
+        return eventBO;
     }
 
     @Override
@@ -73,12 +73,12 @@ public class EventMapperImpl implements EventMapper {
             return null;
         }
 
-        EventResponse.EventResponseBuilder eventResponse = EventResponse.builder();
+        EventResponse eventResponse = new EventResponse();
 
-        eventResponse.name( eventBO.getName() );
-        eventResponse.createdDate( eventBO.getCreatedDate() );
+        eventResponse.setName( eventBO.getName() );
+        eventResponse.setCreatedDate( eventBO.getCreatedDate() );
 
-        return eventResponse.build();
+        return eventResponse;
     }
 
     protected List<EventResponse> eventBOListToEventResponseList(List<EventBO> list) {

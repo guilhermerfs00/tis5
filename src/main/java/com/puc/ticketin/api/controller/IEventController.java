@@ -14,12 +14,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import javax.validation.constraints.NotNull;
 
 import static org.springframework.http.HttpStatus.OK;
 
