@@ -1,11 +1,19 @@
 server:
   port: 8080
+  error:
+    include-message: always
 spring:
   data:
     mongodb:
-      authentication-database: admin
-      auto-index-creation: true
-      host: localhost
-      username: root
-      password: example
-      database: ticketin
+      uri: mongodb://localhost/ticketindb
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG

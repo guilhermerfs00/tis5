@@ -1,6 +1,6 @@
 package com.puc.ticketin.config;//package com.example.demo.config;
 
-import com.puc.ticketin.domain.entity.Username;
+import com.puc.ticketin.domain.entity.Auth;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.ReactiveAuditorAware;
@@ -16,14 +16,14 @@ import reactor.core.publisher.Mono;
 public class MongoConfig {
 
     @Bean
-    ReactiveAuditorAware<Username> reactiveAuditorAware() {
+    ReactiveAuditorAware<Auth> reactiveAuditorAware() {
         return () -> ReactiveSecurityContextHolder.getContext()
                 .map(SecurityContext::getAuthentication)
                 .filter(Authentication::isAuthenticated)
                 .map(Authentication::getPrincipal)
                 .map(UserDetails.class::cast)
                 .map(UserDetails::getUsername)
-                .map(Username::new)
+                .map(Auth::new)
                 .switchIfEmpty(Mono.empty());
     }
 }

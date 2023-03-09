@@ -1,6 +1,8 @@
 package com.puc.ticketin.api.controller;
 
 import com.puc.ticketin.api.request.AuthenticationRequest;
+import com.puc.ticketin.api.request.UserRequest;
+import com.puc.ticketin.api.response.UserResponse;
 import com.puc.ticketin.domain.bo.UserBO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -11,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
@@ -31,16 +34,25 @@ public interface IUserController {
     @PostMapping("/login")
     Mono<ResponseEntity> login(@Valid @RequestBody Mono<AuthenticationRequest> authRequest);
 
-
     @Operation(
-            summary = "Buscar um usuaro registrado",
+            summary = "Criar um usuaro novo",
             responses = {
-                    @ApiResponse(responseCode = "200",
-                            description = "Usuario encontrado com sucesso.")
+                    @ApiResponse(responseCode = "201",
+                            description = "Usuario criado com sucesso.")
             }
     )
-    @GetMapping("/{username}")
-    Mono<ResponseEntity> findByUsername(@PathVariable String username);
+    @PostMapping("/create")
+    ResponseEntity<Mono<UserResponse>> createUser(@Valid @RequestBody Mono<UserRequest> user);
+
+    @Operation(
+            summary = "Buscar todos registrado",
+            responses = {
+                    @ApiResponse(responseCode = "200",
+                            description = "Usuarios encontrados com sucesso.")
+            }
+    )
+    @GetMapping
+    ResponseEntity<Flux<UserBO>> findAllUsers();
 
     @Operation(
             summary = "Buscar o dados de um usuario",

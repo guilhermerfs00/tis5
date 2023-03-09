@@ -1,9 +1,8 @@
 package com.puc.ticketin;
 
-import com.puc.ticketin.domain.entity.Event;
 import com.puc.ticketin.domain.entity.Ticket;
 import com.puc.ticketin.domain.entity.User;
-import com.puc.ticketin.repository.EventRepository;
+import com.puc.ticketin.domain.enums.RoleEnum;
 import com.puc.ticketin.repository.ReactiveEventRepository;
 import com.puc.ticketin.repository.ReactiveTicketRepository;
 import com.puc.ticketin.repository.ReactiveUserRepository;
@@ -15,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 
+import javax.management.relation.Role;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +28,6 @@ import static com.puc.ticketin.domain.enums.RoleEnum.ROLE_USER;
 public class DataInitializer {
 
     private final ReactiveTicketRepository ticketRepository;
-    private final ReactiveEventRepository eventRepository;
     private final ReactiveUserRepository reactiveUserRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -38,17 +37,16 @@ public class DataInitializer {
 
         var initPosts = this.reactiveUserRepository.deleteAll()
                 .thenMany(
-                        Flux.just("user", "admin")
-                                .flatMap(username -> {
-                                    List<String> roles = "user".equals(username) ?
-                                            List.of(ROLE_USER.getValue()) :
-                                            Arrays.asList(ROLE_USER.getValue(), ROLE_ADMIN.getValue());
+                        Flux.just(ROLE_ADMIN, ROLE_USER)
+                                .flatMap(role -> {
+                                    List<RoleEnum> roles = ROLE_USER.equals(role) ?
+                                            List.of(ROLE_USER) :
+                                            Arrays.asList(ROLE_USER, ROLE_ADMIN);
 
                                     User user = User.builder()
                                             .roles(roles)
-                                            .username(username)
-                                            .password(passwordEncoder.encode("analinda"))
-                                            .email(username + "@gmail.com")
+                                            .password(passwordEncoder.encode("123"))
+                                            .email(role + "@gmail.com")
                                             .build();
 
                                     return this.reactiveUserRepository.save(user);

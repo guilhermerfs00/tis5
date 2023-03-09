@@ -60,9 +60,10 @@ public class SecurityConfig {
     @Bean
     public ReactiveUserDetailsService userDetailsService(ReactiveUserRepository users) {
 
-        return username -> users.findByUsername(username)
+        return email -> users.findByEmail(email)
                 .map(u -> User
-                        .withUsername(u.getUsername()).password(u.getPassword())
+                        .withUsername(u.getEmail())
+                        .password(u.getPassword())
                         .authorities(u.getRoles().toArray(new String[0]))
                         .accountExpired(!u.isActive())
                         .credentialsExpired(!u.isActive())

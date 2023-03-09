@@ -2,6 +2,9 @@ package com.puc.ticketin.api.controller.impl;
 
 import com.puc.ticketin.api.controller.IUserController;
 import com.puc.ticketin.api.request.AuthenticationRequest;
+import com.puc.ticketin.api.request.UserRequest;
+import com.puc.ticketin.api.response.UserResponse;
+import com.puc.ticketin.domain.bo.UserBO;
 import com.puc.ticketin.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
@@ -34,9 +38,13 @@ public class UserController implements IUserController {
     }
 
     @Override
-    public Mono<ResponseEntity> findByUsername(String username) {
-        return Mono.just(service.findByUsername(username))
-                .map(userBOMono -> new ResponseEntity<>(userBOMono, HttpStatus.OK));
+    public ResponseEntity<Mono<UserResponse>> createUser(Mono<UserRequest> userRequest) {
+        return ResponseEntity.ok().body(service.createUser(userRequest));
+    }
+
+    @Override
+    public ResponseEntity<Flux<UserBO>> findAllUsers() {
+        return ResponseEntity.ok().body(service.findAll());
     }
 
     @Override

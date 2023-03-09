@@ -1,6 +1,7 @@
 package com.puc.ticketin.domain.entity;//package com.example.demo.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.puc.ticketin.domain.enums.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +23,7 @@ public class User {
     @Id
     private String id;
 
-    private String username;
+    private String name;
 
     @JsonIgnore
     private String password;
@@ -34,6 +35,6 @@ public class User {
     private boolean active = true;
 
     @Builder.Default()
-    private List<String> roles = new ArrayList<>();
+    private List<RoleEnum> roles = new ArrayList<>();
 
 }

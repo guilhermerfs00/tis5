@@ -11,6 +11,7 @@ G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\entity\Event.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\DataInitializer.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\entity\Username.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\config\PageableWebFluxConfiguration.java
+G:\TIS\ticketin\src\main\java\com\puc\ticketin\api\response\UserResponse.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\mapper\UserMapper.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\entity\Ticket.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\mapper\EventMapper.java
@@ -22,6 +23,7 @@ G:\TIS\ticketin\src\main\java\com\puc\ticketin\api\response\PageResponse.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\repository\ReactiveTicketRepository.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\api\controller\IEventController.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\service\UserService.java
+G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\entity\Order.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\config\MongoConfig.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\api\controller\IUserController.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\enums\RoleEnum.java
@@ -33,6 +35,7 @@ G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\bo\UserBO.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\service\AuthService.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\config\SecurityConfig.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\config\WebConfig.java
+G:\TIS\ticketin\src\main\java\com\puc\ticketin\api\request\UserRequest.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\exception\EventException.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\api\response\EventResponse.java
 G:\TIS\ticketin\src\main\java\com\puc\ticketin\domain\helper\CpfCnpjValidator.java
