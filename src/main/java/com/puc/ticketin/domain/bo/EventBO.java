@@ -1,4 +1,4 @@
-package com.puc.ticketin.domain.bo;//package com.example.demo.domain.bo;
+package com.puc.ticketin.domain.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

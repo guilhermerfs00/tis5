@@ -18,6 +18,7 @@ import javax.management.relation.Role;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.puc.ticketin.domain.enums.RoleEnum.ROLE_ADMIN;
 import static com.puc.ticketin.domain.enums.RoleEnum.ROLE_USER;
@@ -44,7 +45,7 @@ public class DataInitializer {
                                             Arrays.asList(ROLE_USER, ROLE_ADMIN);
 
                                     User user = User.builder()
-                                            .roles(roles)
+                                            .roles(roles.stream().map(RoleEnum::getValue).collect(Collectors.toList()))
                                             .password(passwordEncoder.encode("123"))
                                             .email(role + "@gmail.com")
                                             .build();

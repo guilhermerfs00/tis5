@@ -4,6 +4,7 @@ import com.puc.ticketin.api.controller.IUserController;
 import com.puc.ticketin.api.request.AuthenticationRequest;
 import com.puc.ticketin.api.request.UserRequest;
 import com.puc.ticketin.api.response.UserResponse;
+import com.puc.ticketin.domain.bo.TockenBO;
 import com.puc.ticketin.domain.bo.UserBO;
 import com.puc.ticketin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -28,13 +29,8 @@ public class UserController implements IUserController {
     private final UserService service;
 
     @Override
-    public Mono<ResponseEntity> login(Mono<AuthenticationRequest> authRequest) {
-        return Mono.just(service.login(authRequest))
-                .map(jwt -> {
-                    HttpHeaders httpHeaders = new HttpHeaders();
-                    httpHeaders.add(AUTHORIZATION, "Bearer " + jwt);
-                    return new ResponseEntity<>(Map.of("access_token", jwt), httpHeaders, HttpStatus.OK);
-                });
+    public ResponseEntity<Mono<TockenBO>> login(Mono<AuthenticationRequest> authRequest) {
+        return ResponseEntity.ok().body(service.login(authRequest));
     }
 
     @Override
@@ -43,7 +39,7 @@ public class UserController implements IUserController {
     }
 
     @Override
-    public ResponseEntity<Flux<UserBO>> findAllUsers() {
+    public ResponseEntity<Flux<UserResponse>> findAllUsers() {
         return ResponseEntity.ok().body(service.findAll());
     }
 

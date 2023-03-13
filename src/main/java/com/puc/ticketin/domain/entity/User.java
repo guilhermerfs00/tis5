@@ -35,6 +35,6 @@ public class User {
     private boolean active = true;
 
     @Builder.Default()
-    private List<RoleEnum> roles = new ArrayList<>();
+    private List<String> roles = new ArrayList<>();
 
 }

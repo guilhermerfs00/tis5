@@ -7,7 +7,6 @@ com\puc\ticketin\domain\mapper\UserMapper.class
 com\puc\ticketin\domain\bo\HttpError$Notification$NotificationBuilder.class
 com\puc\ticketin\domain\enums\RoleEnum.class
 com\puc\ticketin\repository\ReactiveEventRepository.class
-com\puc\ticketin\domain\entity\Username.class
 com\puc\ticketin\domain\mapper\EventMapper.class
 com\puc\ticketin\api\response\UserResponse$UserResponseBuilder.class
 com\puc\ticketin\api\response\UserResponse.class
@@ -53,6 +52,7 @@ com\puc\ticketin\TicketinApplication.class
 com\puc\ticketin\domain\mapper\PageResponseMapper.class
 com\puc\ticketin\domain\mapper\UserMapperImpl.class
 com\puc\ticketin\domain\helper\CpfCnpjValidator.class
+com\puc\ticketin\domain\entity\Auth.class
 com\puc\ticketin\config\WebConfig.class
 com\puc\ticketin\domain\entity\Order$OrderBuilder.class
 com\puc\ticketin\api\request\EventFilterRequest.class

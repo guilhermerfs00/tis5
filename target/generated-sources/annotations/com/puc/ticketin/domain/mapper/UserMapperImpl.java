@@ -11,7 +11,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-09T20:18:56-0300",
+    date = "2023-03-13T18:42:10-0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
@@ -28,10 +28,7 @@ public class UserMapperImpl implements UserMapper {
         userBO.setPassword( entity.getPassword() );
         userBO.setEmail( entity.getEmail() );
         userBO.setActive( entity.isActive() );
-        List<RoleEnum> list = entity.getRoles();
-        if ( list != null ) {
-            userBO.setRoles( new ArrayList<RoleEnum>( list ) );
-        }
+        userBO.setRoles( stringListToRoleEnumList( entity.getRoles() ) );
 
         return userBO;
     }
@@ -48,10 +45,7 @@ public class UserMapperImpl implements UserMapper {
         String email = null;
         Boolean active = null;
 
-        List<RoleEnum> list = entity.getRoles();
-        if ( list != null ) {
-            roles = new ArrayList<RoleEnum>( list );
-        }
+        roles = stringListToRoleEnumList( entity.getRoles() );
         id = entity.getId();
         name = entity.getName();
         email = entity.getEmail();
@@ -76,10 +70,7 @@ public class UserMapperImpl implements UserMapper {
         if ( bo.getActive() != null ) {
             user.setActive( bo.getActive() );
         }
-        List<RoleEnum> list = bo.getRoles();
-        if ( list != null ) {
-            user.setRoles( new ArrayList<RoleEnum>( list ) );
-        }
+        user.setRoles( roleEnumListToStringList( bo.getRoles() ) );
 
         return user;
     }
@@ -127,5 +118,31 @@ public class UserMapperImpl implements UserMapper {
         UserResponse userResponse = new UserResponse( id, name, email, active, roles );
 
         return userResponse;
+    }
+
+    protected List<RoleEnum> stringListToRoleEnumList(List<String> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<RoleEnum> list1 = new ArrayList<RoleEnum>( list.size() );
+        for ( String string : list ) {
+            list1.add( Enum.valueOf( RoleEnum.class, string ) );
+        }
+
+        return list1;
+    }
+
+    protected List<String> roleEnumListToStringList(List<RoleEnum> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<String> list1 = new ArrayList<String>( list.size() );
+        for ( RoleEnum roleEnum : list ) {
+            list1.add( roleEnum.name() );
+        }
+
+        return list1;
     }
 }
